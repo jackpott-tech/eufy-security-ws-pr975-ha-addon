@@ -1,5 +1,5 @@
 name: eufy-security-ws PR975 Test
-description: Isolated test build of eufy-security-ws 3.1.0 with eufy-security-client PR 975
+description: Fix for Eufy "No devices found" and API code 200 using eufy-security-client PR 975
 version: 3.1.0-pr975.1
 slug: "eufy_security_ws_pr975"
 url: https://github.com/jackpott-tech/eufy-security-ws-pr975-ha-addon

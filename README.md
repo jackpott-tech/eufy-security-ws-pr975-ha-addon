@@ -1,8 +1,29 @@
-# eufy-security-ws PR975 Home Assistant add-on
+# Eufy Home Assistant: "No devices found" fix
 
-Experimental, rollback-friendly Home Assistant add-on for Eufy accounts that
-authenticate successfully but return an empty device inventory because Eufy's
-API now uses `code: 200` for successful responses.
+**Experimental Home Assistant add-on for Eufy HomeBase 2, eufyCam 2C, and
+other Eufy Security devices affected by an empty device inventory after the
+Passport API `code: 200` migration.**
+
+This rollback-friendly build targets Eufy accounts that authenticate
+successfully in `eufy-security-ws`, but return no houses, stations, or devices
+because newer Eufy API responses use `code: 200` for success.
+
+## Symptoms and log messages
+
+This project may help when the Eufy Security app works normally, but Home
+Assistant or `eufy-security-ws` shows one or more of these symptoms:
+
+- `No houses found`
+- `No stations found`
+- `No devices found`
+- `Response code not ok`
+- Eufy login succeeds, but the device inventory remains empty
+- HomeBase 2 or eufyCam 2C devices are missing in Home Assistant
+- the API response contains `code: 200`, but the client treats it as an error
+
+Common German searches: **Eufy keine Geräte gefunden**, **Eufy HomeBase 2
+nicht in Home Assistant**, **Eufy keine Stationen gefunden**, or **Eufy App
+funktioniert, Home Assistant findet keine Kameras**.
 
 This project packages:
 
@@ -22,6 +43,10 @@ Eufy accounts now return success as `200`, causing passport, house, station,
 and device responses to be rejected even though login succeeded. PR #975 adds
 one helper that accepts exactly `0` or `200` and applies it to the affected
 response checks. Other values remain failures.
+
+This specifically addresses the Passport/API success-code compatibility issue;
+it is not a general fix for invalid credentials, two-factor authentication,
+network discovery, RTSP, or unsupported Eufy hardware.
 
 ## Validation
 
