@@ -1,0 +1,4 @@
+/artifacts/
+/.rebuild-work.*/
+*.log
+.DS_Store
